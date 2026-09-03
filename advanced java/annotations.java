@@ -1,4 +1,4 @@
-// package advanced java;
+//Annotations are used to indicate to compier on what we are trying to do
 class A{
     public void show(){
         System.out.println("In A show...");
