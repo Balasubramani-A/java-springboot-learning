@@ -12,3 +12,4 @@ public class streamApi {
         s1.forEach(n -> System.out.println(n));
     }
 }
+ 
