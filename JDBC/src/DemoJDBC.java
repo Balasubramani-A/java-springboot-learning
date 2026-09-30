@@ -20,18 +20,23 @@ public class DemoJDBC{
         String url = "jdbc:postgresql://localhost:5432/Demo";
         String uname = "postgres";
         String pass = "root";
-        String sql = "select sname from student where sid = 1";
+        String sql = "select * from student";
 
         Connection con = DriverManager.getConnection(url, uname, pass);
         System.out.println("Connection established");
 
         Statement st = con.createStatement();
         ResultSet rs = st.executeQuery(sql);
-        rs.next();
+        // rs.next();
 
-        String name = rs.getString("sname");
-        System.out.println("Name of a student is " + name);
+        // String name = rs.getString("sname");
+        // System.out.println("Name of a student is " + name);
 
+        while(rs.next()){
+            System.out.print(rs.getInt(1) + " - ");
+            System.out.print(rs.getString(2) + " - ");
+            System.out.println(rs.getString(3));
+        }
         // System.out.println(rs.next());
         con.close();
         System.out.println("Connection closed");
