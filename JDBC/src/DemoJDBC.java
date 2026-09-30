@@ -20,11 +20,20 @@ public class DemoJDBC{
         String url = "jdbc:postgresql://localhost:5432/Demo";
         String uname = "postgres";
         String pass = "root";
+        String sql = "select sname from student where sid = 2";
 
         Connection con = DriverManager.getConnection(url, uname, pass);
-
         System.out.println("Connection established");
-        System.out.println("This works out of the box!");
+
+        Statement st = con.createStatement();
+        ResultSet rs = st.executeQuery(sql);
+        System.out.println(rs.next());
+        con.close();
+        System.out.println("Connection closed");
+
+
+
+
     }
 
 
