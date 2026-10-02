@@ -1,9 +1,8 @@
 package org.example;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-import jakarta.persistence.Transient;
+import jakarta.persistence.*;
+
+import java.util.List;
 
 @Entity
 @Table(name = "alien_table_temp")
@@ -12,18 +11,21 @@ public class Alien {
     @Id
     private int aid;
     private String aname;
-    private Laptop laptop;
-
-    @Transient
+    @OneToMany(mappedBy = "alien")
+    private List<Laptop> laptops;
     private String tech;
 
-    public Laptop getLaptop() {
-        return laptop;
+    public List<Laptop> getLaptops() {
+        return laptops;
     }
 
-    public void setLaptop(Laptop laptop) {
-        this.laptop = laptop;
+    public void setLaptops(List<Laptop> laptops) {
+        this.laptops = laptops;
     }
+
+
+
+
 
     public int getAid() {
         return aid;
@@ -54,7 +56,7 @@ public class Alien {
         return "Alien{" +
                 "aid=" + aid +
                 ", aname='" + aname + '\'' +
-                ", laptop=" + laptop +
+                ", laptops=" + laptops +
                 ", tech='" + tech + '\'' +
                 '}';
     }
