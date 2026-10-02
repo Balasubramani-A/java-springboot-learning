@@ -11,9 +11,9 @@ public class Main {
 
 
         Student s1 = new Student();
-        s1.setsName("Harsh");
-        s1.setRollNO(103);
-        s1.setsAge(23);
+        s1.setsName("Anvit");
+        s1.setRollNO(106);
+        s1.setsAge(28);
 
 
 
@@ -30,7 +30,7 @@ public class Main {
 //        session.persist(s1);
 
         //We can use merge to create or update any record
-        session.merge(s1);
+        session.remove(s1);
 
         transaction.commit();
 
