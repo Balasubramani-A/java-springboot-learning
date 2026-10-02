@@ -15,6 +15,8 @@ public class Main {
         s1.setRollNO(105);
         s1.setsAge(22);
 
+        Student s2 = null;
+
         Configuration cfg = new Configuration();
         cfg.addAnnotatedClass(org.example.Student.class);
         cfg.configure();
@@ -23,13 +25,15 @@ public class Main {
         Session session = sf.openSession();
 
 
-        Transaction transaction = session.beginTransaction();
-        session.persist(s1);
-        transaction.commit();
+        s2 = session.find(Student.class, 102);
+//        Transaction transaction = session.beginTransaction();
+//        session.persist(s1);
+//        transaction.commit();
+
         session.close();
         sf.close();
 
-        System.out.println(s1);
+        System.out.println(s2);
 
     }
 
