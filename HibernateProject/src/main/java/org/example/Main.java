@@ -11,11 +11,11 @@ public class Main {
 
 
         Student s1 = new Student();
-        s1.setsName("Gaurav");
-        s1.setRollNO(105);
-        s1.setsAge(22);
+        s1.setsName("Harsh");
+        s1.setRollNO(103);
+        s1.setsAge(23);
 
-        Student s2 = null;
+
 
         Configuration cfg = new Configuration();
         cfg.addAnnotatedClass(org.example.Student.class);
@@ -25,15 +25,20 @@ public class Main {
         Session session = sf.openSession();
 
 
-        s2 = session.find(Student.class, 102);
-//        Transaction transaction = session.beginTransaction();
+
+        Transaction transaction = session.beginTransaction();
 //        session.persist(s1);
-//        transaction.commit();
+
+        //We can use merge to create or update any record
+        session.merge(s1);
+
+        transaction.commit();
+
 
         session.close();
         sf.close();
 
-        System.out.println(s2);
+        System.out.println(s1);
 
     }
 
