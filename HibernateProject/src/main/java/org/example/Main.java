@@ -9,16 +9,20 @@ import org.hibernate.cfg.Configuration;
 public class Main {
     static void main() {
 
+        Laptop l1 = new Laptop();
+        l1.setBrand("Asus");
+        l1.setModel("Rog");
+        l1.setRam(16);
 
-        Student s1 = new Student();
-        s1.setsName("Anvit");
-        s1.setRollNO(106);
-        s1.setsAge(28);
-
+        Alien a1 = new Alien();
+        a1.setAid(107);
+        a1.setAname("Rahul");
+        a1.setTech("Java");
+        a1.setLaptop(l1);
 
 
         Configuration cfg = new Configuration();
-        cfg.addAnnotatedClass(org.example.Student.class);
+        cfg.addAnnotatedClass(org.example.Alien.class);
         cfg.configure();
 
         SessionFactory sf = cfg.buildSessionFactory();
@@ -27,18 +31,17 @@ public class Main {
 
 
         Transaction transaction = session.beginTransaction();
-//        session.persist(s1);
 
-        //We can use merge to create or update any record
-        session.remove(s1);
-
+        session.persist(a1);
         transaction.commit();
 
+        Alien a2 = session.find(Alien.class, 101);
+        System.out.println(a2);
 
         session.close();
         sf.close();
 
-        System.out.println(s1);
+
 
     }
 
