@@ -11,8 +11,13 @@ public class SpringbootDemoApplication {
 
         ApplicationContext context = SpringApplication.run(SpringbootDemoApplication.class, args);
 
-        Alien obj = context.getBean(Alien.class);
-        obj.code();
+        Student s = context.getBean(Student.class);
+        s.setRollNo(101);
+        s.setName("Navin");
+        s.setMarks(78);
+
+        addStudent(s);
+
 
 
     }
