@@ -1,4 +1,4 @@
-package com.example.JobApp;
+package com.example.JobApp.controller;
 
 //import ch.qos.logback.core.model.Model;
 import com.example.JobApp.model.JobPost;
@@ -36,7 +36,7 @@ public class JobController {
         return "success";
     }
 
-   @GetMapping("/veiwalljobs")
+   @GetMapping("/viewalljobs")
     public String viewJobs(Model m){
        System.out.println(">>> viewJobs method CALLED <<<");
         List<JobPost> jobs = service.getAllJobs();
