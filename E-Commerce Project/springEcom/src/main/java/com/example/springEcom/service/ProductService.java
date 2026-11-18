@@ -23,7 +23,7 @@ public class ProductService {
 
 
     public Product getProductById(int id) {
-        return productRepo.findById(id).get();
+        return productRepo.findById(id).orElse(new Product(-1));
     }
 
     public Product addProduct(Product product, MultipartFile image) throws IOException {

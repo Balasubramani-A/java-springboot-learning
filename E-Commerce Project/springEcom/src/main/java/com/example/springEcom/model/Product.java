@@ -29,6 +29,11 @@ public class Product {
     private int stockQuantity;
     private String imageName;
     private String imageType;
+
+    public Product(int n) {
+
+    }
+
     @Lob
     private byte[] imageData;
 
